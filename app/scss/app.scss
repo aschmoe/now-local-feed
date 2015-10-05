@@ -1,0 +1,99 @@
+
+
+@import "loaders/load";
+
+$icon-dim: 50px;
+
+.nav-pills {
+  margin-bottom: 20px;
+}
+
+.now-feed  {
+  position: relative;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    margin-left: -1.5px;
+    background-color: #eeeeee;
+    display: block;
+  
+    // mobile 
+    left: $icon-dim/2;
+  }
+
+  
+
+  & > * {
+    padding-left: $icon-dim + 20px;
+  }
+
+  
+
+  .feed-icon {
+    float: left;
+    background: darken(#eeeeee, 5%);
+    border-radius: $icon-dim/2;
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    width: $icon-dim;
+    height: $icon-dim;
+    line-height: $icon-dim * 1.05;
+    text-align: center;
+    margin-left: -($icon-dim + 20px);
+    @include transition(background-color .2s ease);
+
+    &, &:hover {
+      i {
+        color: darken(#eeeeee, 40%);
+      }
+    }
+
+    &:hover {
+      background: darken(#eeeeee, 10%);
+      
+    }
+  }
+}
+
+@include respond($sm-up) {
+  
+  .now-feed  {
+    position: relative;
+
+    &:before {
+      left: 50%;
+    }
+
+    & > * {
+      clear: both;
+      width: 46%;
+
+      &:nth-child(2n) {
+        padding-right: $icon-dim + 20px;
+        padding-left: 0;
+        float: left;
+        margin-left: 4%;
+
+        .feed-icon {
+          float: right;
+          margin-left: 0;
+          margin-right: -($icon-dim + 20px + $icon-dim/2);
+        }
+      }
+
+      &:nth-child(2n+1) {
+        float: right;
+        margin-right: 4%;
+
+        .feed-icon {
+          margin-left: -($icon-dim + 20px + $icon-dim/2);
+        }
+      }
+    }
+  } 
+}
